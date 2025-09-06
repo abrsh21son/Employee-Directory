@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Django Fun!</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <h1>My Django site</h1>
+      <div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h2>Explore Django with Fun!</h2>
+      <p>
+        Dive into Django development, experiment with fully implementing Employee app that make all the crude operation
+        on employee and how to fetch and generate sql queries simply in django to deep rendering and  admin panel
+      </p>
+      <a href="#" class="button">start my app</a>
+      <br /><br />
+      <img
+        src="{% static 'images/django.png' %}"
+        alt="django"
+        width="1200"
+        height="400"
+      />
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-card">
+        <h3>Hands-On Practice</h3>
+        <p>
+buildning very intesting crud app with django         </p>
+      </div>
+      <div class="feature-card">
+        <h3>Interactive Learning</h3>
+        <p>
+          follow with the udemy best seller course and gain detailed expriance
+        </p>
+      </div>
+      <div class="feature-card">
+        <h3>Real Projects</h3>
+        <p>i created intersting project through full django and gained skills grow step by step.</p>
+      </div>
+    </section>
+      
+  <div class="table-container">
+        <h2>Employee Information</h2>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Full Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for employee in employees %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+
+          <td>
+            <a href="{% url 'employee_detail' employee.id %}">{{employee.first_name}}</a>
+            </td>
+          <td>{{ employee.phone_number }}</td>
+          <td>{{ employee.email_adress }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3" style="text-align:center;">No contacts available</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 My Django Site. All rights reserved.</footer>
+  </body>
+</html>

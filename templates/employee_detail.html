@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>employee Detail</title>
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-header">
+        <h2>{{ employee_data.first_name }}</h2>
+      </div>
+      <div class="card-body">
+        <p><strong>FUll Name:</strong> {{employee_data.email_adress }}</p>
+        <p><strong>Phone:</strong> {{ employee_data.phone_number }}</p>
+        <p><strong>Email:</strong> {{ employee_data.email_adress }}</p>
+        <p><strong>designation:</strong> {{ employee_data.designation }}</p>
+        <p>
+          <strong>Created At:</strong> {{ employee_data.created_at|date:"M d, Y H:i" }}
+        </p>
+           <button class="btn" >
+            <a href="{% url 'home' %}">Back to home</a>
+           </button>
+      </div>
+    </div>
+  </body>
+</html>
